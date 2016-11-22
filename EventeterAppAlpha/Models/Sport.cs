@@ -22,8 +22,10 @@ namespace EventeterAppAlpha.Models
     
         public int SportID { get; set; }
         public string SportName { get; set; }
+        public Nullable<int> LocationID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Team> Teams { get; set; }
+        public virtual Location Location { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace EventeterAppAlpha.Models
         public Location()
         {
             this.Events = new HashSet<Event>();
+            this.Sports = new HashSet<Sport>();
         }
     
         public int LocationID { get; set; }
@@ -28,5 +29,7 @@ namespace EventeterAppAlpha.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
         public virtual Event Event { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sport> Sports { get; set; }
     }
 }

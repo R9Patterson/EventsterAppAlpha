@@ -30,6 +30,7 @@
     <EntitySetMapping Name="Sports">
       <EntityTypeMapping TypeName="EventsterDBModel.Sport">
         <MappingFragment StoreEntitySet="Sport">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
           <ScalarProperty Name="SportID" ColumnName="SportID" />
           <ScalarProperty Name="SportName" ColumnName="SportName" />
         </MappingFragment>

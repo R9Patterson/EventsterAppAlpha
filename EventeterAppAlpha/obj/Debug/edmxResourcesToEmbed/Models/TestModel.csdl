@@ -30,6 +30,7 @@
     <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Events" Relationship="Self.FK__Event__LocationI__440B1D61" FromRole="Location" ToRole="Event" />
     <NavigationProperty Name="Event" Relationship="Self.FK__Location__EventI__4222D4EF" FromRole="Location" ToRole="Event" />
+    <NavigationProperty Name="Sports" Relationship="EventsterDBModel.FK__Sport__LocationI__46E78A0C" FromRole="Location" ToRole="Sport" />
   </EntityType>
   <EntityType Name="Sport">
     <Key>
@@ -38,6 +39,8 @@
     <Property Name="SportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SportName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Teams" Relationship="Self.FK__Team__SportID__403A8C7D" FromRole="Sport" ToRole="Team" />
+    <Property Name="LocationID" Type="Int32" />
+    <NavigationProperty Name="Location" Relationship="EventsterDBModel.FK__Sport__LocationI__46E78A0C" FromRole="Sport" ToRole="Location" />
   </EntityType>
   <EntityType Name="Team">
     <Key>
@@ -183,6 +186,10 @@
       <End Role="Team" EntitySet="Teams" />
     </AssociationSet>
     <FunctionImport Name="GetUserList" ReturnType="Collection(EventsterDBModel.User)" />
+    <AssociationSet Name="FK__Sport__LocationI__46E78A0C" Association="EventsterDBModel.FK__Sport__LocationI__46E78A0C">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Sport" EntitySet="Sports" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="spUserList_Result">
     <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
@@ -194,4 +201,16 @@
     <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
   </ComplexType>
+  <Association Name="FK__Sport__LocationI__46E78A0C">
+    <End Type="EventsterDBModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="EventsterDBModel.Sport" Role="Sport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Sport">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -30,6 +30,7 @@
     </Key>
     <Property Name="SportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SportName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LocationID" Type="int" />
   </EntityType>
   <EntityType Name="Team">
     <Key>
@@ -98,6 +99,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Sport__LocationI__46E78A0C">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Sport" Type="Self.Sport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Sport">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Team__EventID__412EB0B6">
     <End Role="Event" Type="Self.Event" Multiplicity="1" />
     <End Role="Team" Type="Self.Team" Multiplicity="*" />
@@ -156,6 +169,10 @@
     <AssociationSet Name="FK__Location__EventI__4222D4EF" Association="Self.FK__Location__EventI__4222D4EF">
       <End Role="Event" EntitySet="Event" />
       <End Role="Location" EntitySet="Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sport__LocationI__46E78A0C" Association="Self.FK__Sport__LocationI__46E78A0C">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="Sport" EntitySet="Sport" />
     </AssociationSet>
     <AssociationSet Name="FK__Team__EventID__412EB0B6" Association="Self.FK__Team__EventID__412EB0B6">
       <End Role="Event" EntitySet="Event" />
