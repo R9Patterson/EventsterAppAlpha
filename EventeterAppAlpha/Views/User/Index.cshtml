@@ -1,0 +1,24 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Username)
+        </th>
+    </tr>
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Username)
+            </td>
+        </tr>
+    }
+</table>

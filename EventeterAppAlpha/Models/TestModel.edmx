@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EventsterDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="EventTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HostName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EventDate" Type="datetime" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="TeamID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sport">
+          <Key>
+            <PropertyRef Name="SportID" />
+          </Key>
+          <Property Name="SportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SportName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SportID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Userdata">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Event__LocationI__440B1D61">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Event__TeamID__44FF419A">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Event__UserID__4316F928">
+          <End Role="Userdata" Type="Self.Userdata" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userdata">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Location__EventI__4222D4EF">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Team__EventID__412EB0B6">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Team__SportID__403A8C7D">
+          <End Role="Sport" Type="Self.Sport" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport">
+              <PropertyRef Name="SportID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="SportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Team__UserID__3F466844">
+          <End Role="Userdata" Type="Self.Userdata" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userdata">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spUserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="EventsterDBModelStoreContainer">
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sport" EntityType="Self.Sport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Userdata" EntityType="Self.Userdata" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Event__LocationI__440B1D61" Association="Self.FK__Event__LocationI__440B1D61">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Event__TeamID__44FF419A" Association="Self.FK__Event__TeamID__44FF419A">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Event__UserID__4316F928" Association="Self.FK__Event__UserID__4316F928">
+            <End Role="Userdata" EntitySet="Userdata" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Location__EventI__4222D4EF" Association="Self.FK__Location__EventI__4222D4EF">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Team__EventID__412EB0B6" Association="Self.FK__Team__EventID__412EB0B6">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Team__SportID__403A8C7D" Association="Self.FK__Team__SportID__403A8C7D">
+            <End Role="Sport" EntitySet="Sport" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Team__UserID__3F466844" Association="Self.FK__Team__UserID__3F466844">
+            <End Role="Userdata" EntitySet="Userdata" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EventsterDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="EventTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TeamID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="Self.FK__Event__LocationI__440B1D61" FromRole="Event" ToRole="Location" />
+          <NavigationProperty Name="Team" Relationship="Self.FK__Event__TeamID__44FF419A" FromRole="Event" ToRole="Team" />
+          <NavigationProperty Name="Userdata" Relationship="Self.FK__Event__UserID__4316F928" FromRole="Event" ToRole="Userdata" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK__Location__EventI__4222D4EF" FromRole="Event" ToRole="Location" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK__Team__EventID__412EB0B6" FromRole="Event" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__Event__LocationI__440B1D61" FromRole="Location" ToRole="Event" />
+          <NavigationProperty Name="Event" Relationship="Self.FK__Location__EventI__4222D4EF" FromRole="Location" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Sport">
+          <Key>
+            <PropertyRef Name="SportID" />
+          </Key>
+          <Property Name="SportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SportName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK__Team__SportID__403A8C7D" FromRole="Sport" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SportID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__Event__TeamID__44FF419A" FromRole="Team" ToRole="Event" />
+          <NavigationProperty Name="Event" Relationship="Self.FK__Team__EventID__412EB0B6" FromRole="Team" ToRole="Event" />
+          <NavigationProperty Name="Sport" Relationship="Self.FK__Team__SportID__403A8C7D" FromRole="Team" ToRole="Sport" />
+          <NavigationProperty Name="Userdata" Relationship="Self.FK__Team__UserID__3F466844" FromRole="Team" ToRole="Userdata" />
+        </EntityType>
+        <EntityType Name="Userdata">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__Event__UserID__4316F928" FromRole="Userdata" ToRole="Event" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK__Team__UserID__3F466844" FromRole="Userdata" ToRole="Team" />
+        </EntityType>
+        <Association Name="FK__Event__LocationI__440B1D61">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Event__TeamID__44FF419A">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Event__UserID__4316F928">
+          <End Role="Userdata" Type="Self.Userdata" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userdata">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Location__EventI__4222D4EF">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Team__EventID__412EB0B6">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Team__SportID__403A8C7D">
+          <End Role="Sport" Type="Self.Sport" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport">
+              <PropertyRef Name="SportID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="SportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Team__UserID__3F466844">
+          <End Role="Userdata" Type="Self.Userdata" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userdata">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EventsterDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Sports" EntityType="Self.Sport" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="Userdatas" EntityType="Self.Userdata" />
+          <AssociationSet Name="FK__Event__LocationI__440B1D61" Association="Self.FK__Event__LocationI__440B1D61">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Event__TeamID__44FF419A" Association="Self.FK__Event__TeamID__44FF419A">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Event__UserID__4316F928" Association="Self.FK__Event__UserID__4316F928">
+            <End Role="Userdata" EntitySet="Userdatas" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Location__EventI__4222D4EF" Association="Self.FK__Location__EventI__4222D4EF">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Team__EventID__412EB0B6" Association="Self.FK__Team__EventID__412EB0B6">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Team__SportID__403A8C7D" Association="Self.FK__Team__SportID__403A8C7D">
+            <End Role="Sport" EntitySet="Sports" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Team__UserID__3F466844" Association="Self.FK__Team__UserID__3F466844">
+            <End Role="Userdata" EntitySet="Userdatas" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <FunctionImport Name="GetUserList" ReturnType="Collection(EventsterDBModel.User)" />
+        </EntityContainer>
+        <ComplexType Name="spUserList_Result">
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="User">
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EventsterDBModelStoreContainer" CdmEntityContainer="EventsterDBEntities">
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="EventsterDBModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="EventsterDBModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sports">
+            <EntityTypeMapping TypeName="EventsterDBModel.Sport">
+              <MappingFragment StoreEntitySet="Sport">
+                <ScalarProperty Name="SportID" ColumnName="SportID" />
+                <ScalarProperty Name="SportName" ColumnName="SportName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="EventsterDBModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="SportID" ColumnName="SportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Userdatas">
+            <EntityTypeMapping TypeName="EventsterDBModel.Userdata">
+              <MappingFragment StoreEntitySet="Userdata">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserList" FunctionName="EventsterDBModel.Store.spUserList">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.User">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
