@@ -64,5 +64,10 @@ namespace EventeterAppAlpha.Controllers
            Session.Clear();
             return RedirectToAction("Login", "Home");
         }
+
+        public ActionResult EventCount()
+        {
+            return View(db.GetCountOfEvents());
+        }
     }
 }

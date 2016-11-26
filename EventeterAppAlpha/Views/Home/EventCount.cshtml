@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetCountOfEvents_Result>
+@{
+    ViewBag.Title = "EventCount";
+}
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+    Home
+</button>
+<h2>EventCount</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading"> Current total number of sporting events, come joint the fun!</div>
+    <div class="panel-body">
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().NumberOfEvents)
+    
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.NumberOfEvents)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

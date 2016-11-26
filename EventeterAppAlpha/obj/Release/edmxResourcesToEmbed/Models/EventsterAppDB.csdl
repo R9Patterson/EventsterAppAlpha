@@ -164,7 +164,7 @@
       <End Role="Team" EntitySet="Teams" />
     </AssociationSet>
     <FunctionImport Name="spCountDistinctLocations" ReturnType="Collection(Int32)" />
-    <FunctionImport Name="GetCountOfEvents" ReturnType="Collection(EventsterDBModel.GetCountOfEvents_Result)" />
+    <FunctionImport Name="spCountEvents" ReturnType="Collection(Int32)" />
     <FunctionImport Name="spCountTeams" ReturnType="Collection(Int32)" />
     <FunctionImport Name="spCountUsers" ReturnType="Collection(Int32)" />
     <FunctionImport Name="spDistinctCount" ReturnType="Collection(Int32)" />
@@ -184,8 +184,5 @@
     <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
-  </ComplexType>
-  <ComplexType Name="GetCountOfEvents_Result">
-    <Property Type="Int32" Name="NumberOfEvents" Nullable="true" />
   </ComplexType>
 </Schema>

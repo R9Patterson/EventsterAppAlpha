@@ -2,26 +2,117 @@
     ViewBag.Title = "Home Page";
 }
 
+<button type="button" class="btn btn-primary btn-lg" value="Register" onclick="location.href='@Url.Action("Logoff", "Home")'">
+    Logoff
+</button>
+
 <div class="jumbotron">
-    <h1>Start A Game!</h1>
+    @if (Session["Email"] != null)
+    {
+        <h2>Welcome @Session["Email"].ToString() , create a new game!</h2>
+    }
     
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-success btn-lg" value="Register [Admin View]" onclick="location.href='@Url.Action("Create", "Userdatas")'">
-                Register
-            </button>
-            <button type="button" class="btn btn-success btn-lg" value="User Names stored procedure" onclick="location.href='@Url.Action("Index", "User")'">
-                User Names stored procedure
-            </button>
-            <button type="button" class="btn btn-success btn-lg" value="TBD" onclick="location.href='@Url.Action("Index", "Home")'">
-                TBD
-            </button>
+
+    <div class="row">
+        <div class="col-md-offset-1">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-primary " value="Create Team" onclick="location.href='@Url.Action("Create", "Teams")'">
+                    1.) Create Team
+                </button>
+                <button type="button" class="btn btn-primary " value="Choose a Sport" onclick="location.href='@Url.Action("Create", "Sports")'">
+                    2.) Choose a Sport
+                </button>
+                <button type="button" class="btn btn-primary " value="Host Sporting Evet" onclick="location.href='@Url.Action("Create", "Events")'">
+                    3.) Host a Game
+                </button>
+                <button type="button" class="btn btn-primary " value="Pick a Location" onclick="location.href='@Url.Action("Create", "Locations")'">
+                    4.) Pick a Location
+                </button>
+            </div>
         </div>
+
     </div>
-    
+
 </div>
 
+
+<div>
+    <!--Creating space between button groups-->
+    <h2 role="separator" class="divider"></h2>
+
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Users <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        @*<li>@Html.ActionLink("List of Users", "Index", "User")</li>*@ <!--This is where to add the list of users code from the stored procedure-->
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Teams <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("List of Teams", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Locations <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("List of Locations", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Sports <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("List of Sports", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Events <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("List of Events", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>

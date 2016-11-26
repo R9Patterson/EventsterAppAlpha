@@ -7,7 +7,7 @@
   <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=rpserverone.database.windows.net;Initial Catalog=EventsterDB;User ID=pattapp;Password=Houston100;MultipleActiveResultSets=True;Application Name=EntityFramework" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\pattapptech\\Documents\\Visual\ Studio\ 2015\\Projects\\EventeterAppAlpha\\EventeterAppAlpha\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
-  <parameter name="EventsterDBEntities-Web.config Connection String" description="" value="metadata=res://*/Models.TestModel.csdl|res://*/Models.TestModel.ssdl|res://*/Models.TestModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=rpserverone.database.windows.net;Initial Catalog=EventsterDB;User ID=pattapp;Password=Houston100;Application Name=EntityFramework&quot;" tags="">
+  <parameter name="EventsterDBEntities-Web.config Connection String" description="" value="metadata=res://*/Models.EventsterAppDB.csdl|res://*/Models.EventsterAppDB.ssdl|res://*/Models.EventsterAppDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=rpserverone.database.windows.net;Initial Catalog=EventsterDB;User ID=pattapp;Password=Houston100;Application Name=EntityFramework&quot;" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\pattapptech\\Documents\\Visual\ Studio\ 2015\\Projects\\EventeterAppAlpha\\EventeterAppAlpha\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EventsterDBEntities']/@connectionString" />
   </parameter>
 </parameters>

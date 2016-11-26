@@ -56,13 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="spCountDistinctLocations" FunctionName="EventsterDBModel.Store.spCountDistinctLocations" />
-    <FunctionImportMapping FunctionImportName="GetCountOfEvents" FunctionName="EventsterDBModel.Store.spCountEvents">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="EventsterDBModel.GetCountOfEvents_Result">
-          <ScalarProperty Name="NumberOfEvents" ColumnName="NumberOfEvents" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spCountEvents" FunctionName="EventsterDBModel.Store.spCountEvents" />
     <FunctionImportMapping FunctionImportName="spCountTeams" FunctionName="EventsterDBModel.Store.spCountTeams" />
     <FunctionImportMapping FunctionImportName="spCountUsers" FunctionName="EventsterDBModel.Store.spCountUsers" />
     <FunctionImportMapping FunctionImportName="spDistinctCount" FunctionName="EventsterDBModel.Store.spDistinctCount" />

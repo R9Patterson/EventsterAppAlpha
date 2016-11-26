@@ -38,9 +38,9 @@ namespace EventeterAppAlpha.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spCountDistinctLocations");
         }
     
-        public virtual ObjectResult<Nullable<int>> spCountEvents()
+        public virtual ObjectResult<GetCountOfEvents_Result> GetCountOfEvents()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spCountEvents");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCountOfEvents_Result>("GetCountOfEvents");
         }
     
         public virtual ObjectResult<Nullable<int>> spCountTeams()
