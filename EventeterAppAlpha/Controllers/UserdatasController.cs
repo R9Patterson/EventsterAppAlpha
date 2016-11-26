@@ -19,7 +19,7 @@ namespace EventeterAppAlpha.Controllers
         {
             return View(db.Userdatas.ToList());
         }
-
+        
         // GET: Userdatas/Details/5
         public ActionResult Details(int? id)
         {
@@ -50,9 +50,22 @@ namespace EventeterAppAlpha.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Userdatas.Add(userdata);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                using (db)
+                {
+                    //Checks for existing user email in the Userdata table
+                    List<Userdata> obj = db.Userdatas.Where(u => u.Email == userdata.Email).ToList();
+                    if (obj.Count >0)
+                    {
+
+                        Response.Write("<script> alert('User already exists, Please enter a valid password')</script>");
+                        //Session["Email"] = uData.Email;
+                        //return RedirectToAction("Index", "Home");
+                    }
+                   
+                }
+                //db.Userdatas.Add(userdata);
+                //db.SaveChanges();
+                //return RedirectToAction("Login", "Home");
             }
 
             return View(userdata);

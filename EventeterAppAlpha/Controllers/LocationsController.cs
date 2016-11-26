@@ -55,7 +55,7 @@ namespace EventeterAppAlpha.Controllers
             {
                 db.Locations.Add(location);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.EventID = new SelectList(db.Events, "EventID", "EventTitle", location.EventID);

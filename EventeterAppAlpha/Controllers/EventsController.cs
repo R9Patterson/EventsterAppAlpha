@@ -55,7 +55,7 @@ namespace EventeterAppAlpha.Controllers
             {
                 db.Events.Add(@event);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Locations");
             }
 
             ViewBag.TeamID = new SelectList(db.Teams, "TeamID", "TeamName", @event.TeamID);

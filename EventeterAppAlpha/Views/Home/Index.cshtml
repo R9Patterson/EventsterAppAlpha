@@ -2,19 +2,32 @@
     ViewBag.Title = "Home Page";
 }
 
+<button type="button" class="btn btn-primary btn-lg" value="Register" onclick="location.href='@Url.Action("Logoff", "Home")'">
+    Logoff
+</button>
+
 <div class="jumbotron">
-    <h1>Start A Game!</h1>
+    @if (Session["Email"] != null)
+    {
+        <h2>Welcome @Session["Email"].ToString() , create a new game!</h2>
+    }
+    
+
+
     <div class="row">
         <div class="col-md-offset-1">
             <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-primary btn-lg" value="Create Team" onclick="location.href='@Url.Action("Index", "Teams")'">
+                <button type="button" class="btn btn-primary " value="Create Team" onclick="location.href='@Url.Action("Create", "Teams")'">
                     1.) Create Team
                 </button>
-                <button type="button" class="btn btn-primary btn-lg" value="Choose a Sport" onclick="location.href='@Url.Action("Index", "Sports")'">
+                <button type="button" class="btn btn-primary " value="Choose a Sport" onclick="location.href='@Url.Action("Create", "Sports")'">
                     2.) Choose a Sport
                 </button>
-                <button type="button" class="btn btn-primary btn-lg" value="Host Sporting Evet" onclick="location.href='@Url.Action("Index", "Events")'">
+                <button type="button" class="btn btn-primary " value="Host Sporting Evet" onclick="location.href='@Url.Action("Create", "Events")'">
                     3.) Host a Game
+                </button>
+                <button type="button" class="btn btn-primary " value="Pick a Location" onclick="location.href='@Url.Action("Create", "Locations")'">
+                    4.) Pick a Location
                 </button>
             </div>
         </div>

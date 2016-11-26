@@ -201,6 +201,7 @@
     <Compile Include="Models\Location.cs">
       <DependentUpon>EventsterAppDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\spLeftOuterJoinUser_Team_Result.cs">
       <DependentUpon>EventsterAppDB.tt</DependentUpon>
@@ -319,6 +320,8 @@
     <Content Include="Views\Sports\Details.cshtml" />
     <Content Include="Views\Sports\Edit.cshtml" />
     <Content Include="Views\Sports\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Logoff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
