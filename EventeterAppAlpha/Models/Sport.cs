@@ -17,15 +17,15 @@ namespace EventeterAppAlpha.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sport()
         {
-            this.Teams = new HashSet<Team>();
+            this.Locations = new HashSet<Location>();
         }
     
         public int SportID { get; set; }
         public string SportName { get; set; }
-        public Nullable<int> LocationID { get; set; }
+        public int TeamID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Team> Teams { get; set; }
-        public virtual Location Location { get; set; }
+        public virtual ICollection<Location> Locations { get; set; }
+        public virtual Team Team { get; set; }
     }
 }

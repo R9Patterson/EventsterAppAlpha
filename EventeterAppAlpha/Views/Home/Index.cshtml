@@ -3,29 +3,103 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Start A Game!</h1>
+    <div class="row">
+        <div class="col-md-offset-1">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-primary btn-lg" value="Create Team" onclick="location.href='@Url.Action("Index", "Teams")'">
+                    1.) Create Team
+                </button>
+                <button type="button" class="btn btn-primary btn-lg" value="Choose a Sport" onclick="location.href='@Url.Action("Index", "Sports")'">
+                    2.) Choose a Sport
+                </button>
+                <button type="button" class="btn btn-primary btn-lg" value="Host Sporting Evet" onclick="location.href='@Url.Action("Index", "Events")'">
+                    3.) Host a Game
+                </button>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
+<div>
+    <!--Creating space between button groups-->
+    <h2 role="separator" class="divider"></h2>
+
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Users <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        @*<li>@Html.ActionLink("List of Users", "Index", "User")</li>*@ <!--This is where to add the list of users code from the stored procedure-->
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Teams <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("List of Teams", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Locations <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("List of Locations", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Sports <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("List of Sports", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <!--For this group=, list all stored procedures views for aggregate functions, and E/R joins-->
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search Events <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("List of Events", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("Join Operation 1", "Index", "Teams")</li>
+        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
 </div>

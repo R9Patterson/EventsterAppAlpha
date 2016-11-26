@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Start A Game!</h1>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-success btn-lg" value="Register [Admin View]" onclick="location.href='@Url.Action("Create", "Userdatas")'">
+                Register
+            </button>
+            <button type="button" class="btn btn-success btn-lg" value="User Names stored procedure" onclick="location.href='@Url.Action("Index", "User")'">
+                User Names stored procedure
+            </button>
+            <button type="button" class="btn btn-success btn-lg" value="TBD" onclick="location.href='@Url.Action("Index", "Home")'">
+                TBD
+            </button>
+        </div>
+    </div>
+    
+</div>
+

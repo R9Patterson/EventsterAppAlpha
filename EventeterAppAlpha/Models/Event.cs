@@ -18,7 +18,6 @@ namespace EventeterAppAlpha.Models
         public Event()
         {
             this.Locations = new HashSet<Location>();
-            this.Teams = new HashSet<Team>();
         }
     
         public int EventID { get; set; }
@@ -26,18 +25,14 @@ namespace EventeterAppAlpha.Models
         public string EventTitle { get; set; }
         public string HostName { get; set; }
         public System.DateTime EventDate { get; set; }
-        public int LocationID { get; set; }
         public string PhoneNumber { get; set; }
         public string Description { get; set; }
         public int TeamID { get; set; }
         public string Email { get; set; }
     
-        public virtual Location Location { get; set; }
         public virtual Team Team { get; set; }
         public virtual Userdata Userdata { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Location> Locations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Team> Teams { get; set; }
     }
 }

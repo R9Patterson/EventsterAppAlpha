@@ -169,52 +169,53 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\SportsController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\UserdatasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Event.cs">
-      <DependentUpon>TestModel.tt</DependentUpon>
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventsterAppDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsterAppDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventsterAppDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventsterAppDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsterAppDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs">
-      <DependentUpon>TestModel.tt</DependentUpon>
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\spLeftOuterJoinUser_Team_Result.cs">
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sport.cs">
-      <DependentUpon>TestModel.tt</DependentUpon>
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\spUserList_Result.cs">
-      <DependentUpon>TestModel.tt</DependentUpon>
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Team.cs">
-      <DependentUpon>TestModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>TestModel.tt</DependentUpon>
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Userdata.cs">
-      <DependentUpon>TestModel.tt</DependentUpon>
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -226,25 +227,26 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\TestModel.Context.tt">
+    <Content Include="Models\EventsterAppDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TestModel.edmx</DependentUpon>
-      <LastGenOutput>TestModel.Context.cs</LastGenOutput>
+      <DependentUpon>EventsterAppDB.edmx</DependentUpon>
+      <LastGenOutput>EventsterAppDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\TestModel.tt">
+    <Content Include="Models\EventsterAppDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TestModel.edmx</DependentUpon>
-      <LastGenOutput>TestModel.cs</LastGenOutput>
+      <DependentUpon>EventsterAppDB.edmx</DependentUpon>
+      <LastGenOutput>EventsterAppDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\TestModel.edmx">
+    <EntityDeploy Include="Models\EventsterAppDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TestModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>EventsterAppDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\TestModel.edmx.diagram">
-      <DependentUpon>TestModel.edmx</DependentUpon>
+    <Content Include="Models\EventsterAppDB.edmx.diagram">
+      <DependentUpon>EventsterAppDB.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\EventsterAppAlpha - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -297,6 +299,26 @@
     <Content Include="Views\Userdatas\Details.cshtml" />
     <Content Include="Views\Userdatas\Edit.cshtml" />
     <Content Include="Views\Userdatas\Index.cshtml" />
+    <Content Include="Views\Teams\Create.cshtml" />
+    <Content Include="Views\Teams\Delete.cshtml" />
+    <Content Include="Views\Teams\Details.cshtml" />
+    <Content Include="Views\Teams\Edit.cshtml" />
+    <Content Include="Views\Teams\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Sports\Create.cshtml" />
+    <Content Include="Views\Sports\Delete.cshtml" />
+    <Content Include="Views\Sports\Details.cshtml" />
+    <Content Include="Views\Sports\Edit.cshtml" />
+    <Content Include="Views\Sports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

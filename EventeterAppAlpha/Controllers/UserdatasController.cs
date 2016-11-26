@@ -35,7 +35,7 @@ namespace EventeterAppAlpha.Controllers
             return View(userdata);
         }
 
-        // GET: Userdatas/Create     Use this for User Registration
+        // GET: Userdatas/Create
         public ActionResult Create()
         {
             return View();

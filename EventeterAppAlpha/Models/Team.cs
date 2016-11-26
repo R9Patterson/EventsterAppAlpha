@@ -18,18 +18,17 @@ namespace EventeterAppAlpha.Models
         public Team()
         {
             this.Events = new HashSet<Event>();
+            this.Sports = new HashSet<Sport>();
         }
     
         public int TeamID { get; set; }
-        public int EventID { get; set; }
         public int UserID { get; set; }
         public string TeamName { get; set; }
-        public int SportID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
-        public virtual Event Event { get; set; }
-        public virtual Sport Sport { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sport> Sports { get; set; }
         public virtual Userdata Userdata { get; set; }
     }
 }

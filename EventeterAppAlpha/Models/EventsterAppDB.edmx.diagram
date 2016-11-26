@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="70663c0e5ac84956b165df089386724c" Name="Diagram1">
+        <EntityTypeShape EntityType="EventsterDBModel.Event" Width="1.5" PointX="6.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsterDBModel.Location" Width="1.5" PointX="11.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsterDBModel.Sport" Width="1.5" PointX="9.125" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsterDBModel.Team" Width="1.5" PointX="2.625" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsterDBModel.Userdata" Width="1.5" PointX="1.25" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="EventsterDBModel.FK__Event__TeamID__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="EventsterDBModel.FK__Event__UserID__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="EventsterDBModel.FK__Location__EventID__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="EventsterDBModel.FK__Location__SportID__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="EventsterDBModel.FK__Sport__TeamID__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="EventsterDBModel.FK__Team__UserID__3F466844" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

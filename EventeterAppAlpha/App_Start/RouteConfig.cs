@@ -16,7 +16,7 @@ namespace EventeterAppAlpha
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Userdatas", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

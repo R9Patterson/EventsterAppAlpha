@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EventsterDBModelStoreContainer" CdmEntityContainer="EventsterDBEntities">
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="EventsterDBModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+          <ScalarProperty Name="HostName" ColumnName="HostName" />
+          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="EventsterDBModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="SportID" ColumnName="SportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sports">
+      <EntityTypeMapping TypeName="EventsterDBModel.Sport">
+        <MappingFragment StoreEntitySet="Sport">
+          <ScalarProperty Name="SportID" ColumnName="SportID" />
+          <ScalarProperty Name="SportName" ColumnName="SportName" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="EventsterDBModel.Team">
+        <MappingFragment StoreEntitySet="Team">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Userdatas">
+      <EntityTypeMapping TypeName="EventsterDBModel.Userdata">
+        <MappingFragment StoreEntitySet="Userdata">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spCountDistinctLocations" FunctionName="EventsterDBModel.Store.spCountDistinctLocations" />
+    <FunctionImportMapping FunctionImportName="spCountEvents" FunctionName="EventsterDBModel.Store.spCountEvents" />
+    <FunctionImportMapping FunctionImportName="spCountTeams" FunctionName="EventsterDBModel.Store.spCountTeams" />
+    <FunctionImportMapping FunctionImportName="spCountUsers" FunctionName="EventsterDBModel.Store.spCountUsers" />
+    <FunctionImportMapping FunctionImportName="spDistinctCount" FunctionName="EventsterDBModel.Store.spDistinctCount" />
+    <FunctionImportMapping FunctionImportName="spInnerJoinEvent_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_Location" />
+    <FunctionImportMapping FunctionImportName="spInnerJoinEvent_and_User" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_User" />
+    <FunctionImportMapping FunctionImportName="spInnerJoinSport_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinSport_and_Location" />
+    <FunctionImportMapping FunctionImportName="spLeftOuterJoinSport_Team" FunctionName="EventsterDBModel.Store.spLeftOuterJoinSport_Team" />
+    <FunctionImportMapping FunctionImportName="spLeftOuterJoinUser_Team" FunctionName="EventsterDBModel.Store.spLeftOuterJoinUser_Team">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.spLeftOuterJoinUser_Team_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spRightOuterJoinTeam_Event" FunctionName="EventsterDBModel.Store.spRightOuterJoinTeam_Event" />
+    <FunctionImportMapping FunctionImportName="spUserList" FunctionName="EventsterDBModel.Store.spUserList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.spUserList_Result">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
