@@ -197,7 +197,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EventsterAppDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetCountDistinctLocations_Result.cs">
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetCountOfEvents_Result.cs">
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetCountTeams_Result.cs">
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetCountUsers_Result.cs">
+      <DependentUpon>EventsterAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetDistinctCount_Result.cs">
       <DependentUpon>EventsterAppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -326,6 +338,10 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Logoff.cshtml" />
     <Content Include="Views\Home\EventCount.cshtml" />
+    <Content Include="Views\Home\CountUser.cshtml" />
+    <Content Include="Views\Home\TeamsCount.cshtml" />
+    <Content Include="Views\Home\SportCount.cshtml" />
+    <Content Include="Views\Home\LocationCount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

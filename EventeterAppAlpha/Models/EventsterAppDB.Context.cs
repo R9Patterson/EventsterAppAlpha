@@ -33,9 +33,9 @@ namespace EventeterAppAlpha.Models
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Userdata> Userdatas { get; set; }
     
-        public virtual ObjectResult<Nullable<int>> spCountDistinctLocations()
+        public virtual ObjectResult<GetCountDistinctLocations_Result> GetCountDistinctLocations()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spCountDistinctLocations");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCountDistinctLocations_Result>("GetCountDistinctLocations");
         }
     
         public virtual ObjectResult<GetCountOfEvents_Result> GetCountOfEvents()
@@ -43,19 +43,19 @@ namespace EventeterAppAlpha.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCountOfEvents_Result>("GetCountOfEvents");
         }
     
-        public virtual ObjectResult<Nullable<int>> spCountTeams()
+        public virtual ObjectResult<GetCountTeams_Result> GetCountTeams()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spCountTeams");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCountTeams_Result>("GetCountTeams");
         }
     
-        public virtual ObjectResult<Nullable<int>> spCountUsers()
+        public virtual ObjectResult<GetCountUsers_Result> GetCountUsers()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spCountUsers");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCountUsers_Result>("GetCountUsers");
         }
     
-        public virtual ObjectResult<Nullable<int>> spDistinctCount()
+        public virtual ObjectResult<GetDistinctCount_Result> GetDistinctCount()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spDistinctCount");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDistinctCount_Result>("GetDistinctCount");
         }
     
         public virtual int spInnerJoinEvent_and_Location()
@@ -91,6 +91,35 @@ namespace EventeterAppAlpha.Models
         public virtual ObjectResult<spUserList_Result> spUserList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spUserList_Result>("spUserList");
+        }
+    
+        public virtual int spUpdateEvent(string eventTitle, string hostName, Nullable<System.DateTime> eventDate, string phoneNumber, string description, string email)
+        {
+            var eventTitleParameter = eventTitle != null ?
+                new ObjectParameter("EventTitle", eventTitle) :
+                new ObjectParameter("EventTitle", typeof(string));
+    
+            var hostNameParameter = hostName != null ?
+                new ObjectParameter("HostName", hostName) :
+                new ObjectParameter("HostName", typeof(string));
+    
+            var eventDateParameter = eventDate.HasValue ?
+                new ObjectParameter("EventDate", eventDate) :
+                new ObjectParameter("EventDate", typeof(System.DateTime));
+    
+            var phoneNumberParameter = phoneNumber != null ?
+                new ObjectParameter("PhoneNumber", phoneNumber) :
+                new ObjectParameter("PhoneNumber", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateEvent", eventTitleParameter, hostNameParameter, eventDateParameter, phoneNumberParameter, descriptionParameter, emailParameter);
         }
     }
 }

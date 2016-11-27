@@ -64,6 +64,6 @@ C:\Users\pattapptech\Documents\Visual Studio 2015\Projects\EventeterAppAlpha\Eve
 C:\Users\pattapptech\Documents\Visual Studio 2015\Projects\EventeterAppAlpha\EventeterAppAlpha\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\pattapptech\Documents\Visual Studio 2015\Projects\EventeterAppAlpha\EventeterAppAlpha\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\pattapptech\Documents\Visual Studio 2015\Projects\EventeterAppAlpha\EventeterAppAlpha\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\pattapptech\Documents\Visual Studio 2015\Projects\EventeterAppAlpha\EventeterAppAlpha\obj\Debug\EventeterAppAlpha.csprojResolveAssemblyReference.cache
 C:\Users\pattapptech\Documents\Visual Studio 2015\Projects\EventeterAppAlpha\EventeterAppAlpha\obj\Debug\EventeterAppAlpha.dll
 C:\Users\pattapptech\Documents\Visual Studio 2015\Projects\EventeterAppAlpha\EventeterAppAlpha\obj\Debug\EventeterAppAlpha.pdb
-C:\Users\pattapptech\Documents\Visual Studio 2015\Projects\EventeterAppAlpha\EventeterAppAlpha\obj\Debug\EventeterAppAlpha.csprojResolveAssemblyReference.cache

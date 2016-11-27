@@ -1,27 +1,27 @@
-﻿@model IEnumerable<EventeterAppAlpha.Models.GetCountOfEvents_Result>
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetDistinctCount_Result>
 @{
-    ViewBag.Title = "EventCount";
+    ViewBag.Title = "SportCount";
 }
 <button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
     Home
 </button>
-<h2>EventCount</h2>
+<h2>SportCount</h2>
 
 <div class="panel panel-default">
-    <div class="panel-heading"> Current total number of sporting events, come join the fun!</div>
+    <div class="panel-heading"> Current total number of available sport types, come join the fun!</div>
     <div class="panel-body">
         <table>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.First().NumberOfEvents)
-    
+                    @Html.DisplayNameFor(model => model.First().NumberOfSports)
+
                 </th>
             </tr>
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(model => item.NumberOfEvents)
+                        @Html.DisplayFor(model => item.NumberOfSports)
                     </td>
                 </tr>
             }

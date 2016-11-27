@@ -92,6 +92,8 @@ namespace EventeterAppAlpha.Controllers
                 db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                
+               
             }
             ViewBag.TeamID = new SelectList(db.Teams, "TeamID", "TeamName", @event.TeamID);
             ViewBag.UserID = new SelectList(db.Userdatas, "UserID", "Username", @event.UserID);

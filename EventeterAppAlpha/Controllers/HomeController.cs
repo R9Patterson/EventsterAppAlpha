@@ -45,8 +45,18 @@ namespace EventeterAppAlpha.Controllers
                     Userdata obj = db.Userdatas.FirstOrDefault(u => u.Email.Equals(uData.Email) && u.Password.Equals(uData.Password));
                     if (obj != null)
                     {
-                        Session["Email"] = uData.Email;
-                        return RedirectToAction("Index", "Home");
+                        
+                        if (uData.Email == "adminrp@admin.com")
+                        {
+                            
+                            return RedirectToAction("Index", "Events");
+                        }
+                        else
+                        {
+                            Session["Email"] = uData.Email;
+                            return RedirectToAction("Index", "Home");
+                        }
+                        
                     }
                     else
                     {
@@ -65,9 +75,35 @@ namespace EventeterAppAlpha.Controllers
             return RedirectToAction("Login", "Home");
         }
 
+
+        //Total number of events in database
         public ActionResult EventCount()
         {
             return View(db.GetCountOfEvents());
+        }
+        //Total number of users in the database
+        public ActionResult CountUser()
+        {
+            return View(db.GetCountUsers());
+        }
+
+        //Total number of teams in the database
+        public ActionResult TeamsCount()
+        {
+            return View(db.GetCountTeams());
+        }
+
+        //Total number of locations in the database
+        public ActionResult LocationCount()
+        {
+            return View(db.GetCountDistinctLocations());
+        }
+
+
+        //Total number of sports in the database
+        public ActionResult SportCount()
+        {
+            return View(db.GetDistinctCount());
         }
     }
 }

@@ -3,11 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
+<button type="button" class="btn btn-primary " value="Register" onclick="location.href='@Url.Action("Logoff", "Home")'">
+    Logoff
+</button>
 
-<h2>Index</h2>
+<h2>Admin Portal</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
