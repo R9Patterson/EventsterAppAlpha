@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetInnerJoinEvent_and_Location_Result>
+@{
+    ViewBag.Title = "EventLocation";
+}
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+    Home
+</button>
+<h2>Event Locations</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading"> Here's a list of events hosted at these locations</div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventTitle)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventDate)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.EventTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.EventDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Description)
+                    </td>
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>
+
+
+

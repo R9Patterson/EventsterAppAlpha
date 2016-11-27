@@ -58,19 +58,19 @@ namespace EventeterAppAlpha.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDistinctCount_Result>("GetDistinctCount");
         }
     
-        public virtual int spInnerJoinEvent_and_Location()
+        public virtual ObjectResult<GetInnerJoinEvent_and_Location_Result> GetInnerJoinEvent_and_Location()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInnerJoinEvent_and_Location");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInnerJoinEvent_and_Location_Result>("GetInnerJoinEvent_and_Location");
         }
     
-        public virtual int spInnerJoinEvent_and_User()
+        public virtual ObjectResult<GetInnerJoinEvent_and_User_Result> GetInnerJoinEvent_and_User()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInnerJoinEvent_and_User");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInnerJoinEvent_and_User_Result>("GetInnerJoinEvent_and_User");
         }
     
-        public virtual int spInnerJoinSport_and_Location()
+        public virtual ObjectResult<GetInnerJoinSport_and_Location_Result> GetInnerJoinSport_and_Location()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInnerJoinSport_and_Location");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInnerJoinSport_and_Location_Result>("GetInnerJoinSport_and_Location");
         }
     
         public virtual int spLeftOuterJoinSport_Team()
@@ -78,19 +78,19 @@ namespace EventeterAppAlpha.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spLeftOuterJoinSport_Team");
         }
     
-        public virtual ObjectResult<spLeftOuterJoinUser_Team_Result> spLeftOuterJoinUser_Team()
+        public virtual ObjectResult<GetLeftOuterJoinUser_Team_Result> GetLeftOuterJoinUser_Team()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spLeftOuterJoinUser_Team_Result>("spLeftOuterJoinUser_Team");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetLeftOuterJoinUser_Team_Result>("GetLeftOuterJoinUser_Team");
         }
     
-        public virtual int spRightOuterJoinTeam_Event()
+        public virtual ObjectResult<GetRightOuterJoinTeam_Event_Result> GetRightOuterJoinTeam_Event()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spRightOuterJoinTeam_Event");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetRightOuterJoinTeam_Event_Result>("GetRightOuterJoinTeam_Event");
         }
     
-        public virtual ObjectResult<spUserList_Result> spUserList()
+        public virtual ObjectResult<GetUserList_Result> GetUserList()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spUserList_Result>("spUserList");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserList_Result>("GetUserList");
         }
     
         public virtual int spUpdateEvent(string eventTitle, string hostName, Nullable<System.DateTime> eventDate, string phoneNumber, string description, string email)
@@ -120,6 +120,31 @@ namespace EventeterAppAlpha.Models
                 new ObjectParameter("Email", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpdateEvent", eventTitleParameter, hostNameParameter, eventDateParameter, phoneNumberParameter, descriptionParameter, emailParameter);
+        }
+    
+        public virtual ObjectResult<GetInnerJoinSport_Team_Result> GetInnerJoinSport_Team()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetInnerJoinSport_Team_Result>("GetInnerJoinSport_Team");
+        }
+    
+        public virtual ObjectResult<GetEventsList_Result> GetEventsList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEventsList_Result>("GetEventsList");
+        }
+    
+        public virtual ObjectResult<GetLocationList_Result> GetLocationList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetLocationList_Result>("GetLocationList");
+        }
+    
+        public virtual ObjectResult<GetSportsList_Result> GetSportsList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSportsList_Result>("GetSportsList");
+        }
+    
+        public virtual ObjectResult<GetTeamList_Result> GetTeamList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTeamList_Result>("GetTeamList");
         }
     }
 }

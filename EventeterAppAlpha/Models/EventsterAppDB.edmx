@@ -131,12 +131,16 @@
         <Function Name="spCountTeams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spCountUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spDistinctCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spEventsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spInnerJoinEvent_and_Location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spInnerJoinEvent_and_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spInnerJoinSport_and_Location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="spLeftOuterJoinSport_Team" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spInnerJoinSport_Team" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spLeftOuterJoinUser_Team" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spLocationList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spRightOuterJoinTeam_Event" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spSportsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spTeamList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spUpdateEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EventTitle" Type="varchar" Mode="In" />
           <Parameter Name="HostName" Type="varchar" Mode="In" />
@@ -349,13 +353,13 @@
           <FunctionImport Name="GetCountTeams" ReturnType="Collection(EventsterDBModel.GetCountTeams_Result)" />
           <FunctionImport Name="GetCountUsers" ReturnType="Collection(EventsterDBModel.GetCountUsers_Result)" />
           <FunctionImport Name="GetDistinctCount" ReturnType="Collection(EventsterDBModel.GetDistinctCount_Result)" />
-          <FunctionImport Name="spInnerJoinEvent_and_Location" />
-          <FunctionImport Name="spInnerJoinEvent_and_User" />
-          <FunctionImport Name="spInnerJoinSport_and_Location" />
+          <FunctionImport Name="GetInnerJoinEvent_and_Location" ReturnType="Collection(EventsterDBModel.GetInnerJoinEvent_and_Location_Result)" />
+          <FunctionImport Name="GetInnerJoinEvent_and_User" ReturnType="Collection(EventsterDBModel.GetInnerJoinEvent_and_User_Result)" />
+          <FunctionImport Name="GetInnerJoinSport_and_Location" ReturnType="Collection(EventsterDBModel.GetInnerJoinSport_and_Location_Result)" />
           <FunctionImport Name="spLeftOuterJoinSport_Team" />
-          <FunctionImport Name="spLeftOuterJoinUser_Team" ReturnType="Collection(EventsterDBModel.spLeftOuterJoinUser_Team_Result)" />
-          <FunctionImport Name="spRightOuterJoinTeam_Event" />
-          <FunctionImport Name="spUserList" ReturnType="Collection(EventsterDBModel.spUserList_Result)" />
+          <FunctionImport Name="GetLeftOuterJoinUser_Team" ReturnType="Collection(EventsterDBModel.GetLeftOuterJoinUser_Team_Result)" />
+          <FunctionImport Name="GetRightOuterJoinTeam_Event" ReturnType="Collection(EventsterDBModel.GetRightOuterJoinTeam_Event_Result)" />
+          <FunctionImport Name="GetUserList" ReturnType="Collection(EventsterDBModel.GetUserList_Result)" />
           <FunctionImport Name="spUpdateEvent">
             <Parameter Name="EventTitle" Mode="In" Type="String" />
             <Parameter Name="HostName" Mode="In" Type="String" />
@@ -364,6 +368,11 @@
             <Parameter Name="Description" Mode="In" Type="String" />
             <Parameter Name="Email" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetInnerJoinSport_Team" ReturnType="Collection(EventsterDBModel.GetInnerJoinSport_Team_Result)" />
+          <FunctionImport Name="GetEventsList" ReturnType="Collection(EventsterDBModel.GetEventsList_Result)" />
+          <FunctionImport Name="GetLocationList" ReturnType="Collection(EventsterDBModel.GetLocationList_Result)" />
+          <FunctionImport Name="GetSportsList" ReturnType="Collection(EventsterDBModel.GetSportsList_Result)" />
+          <FunctionImport Name="GetTeamList" ReturnType="Collection(EventsterDBModel.GetTeamList_Result)" />
         </EntityContainer>
         <ComplexType Name="spLeftOuterJoinUser_Team_Result">
           <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
@@ -388,6 +397,57 @@
         </ComplexType>
         <ComplexType Name="GetCountDistinctLocations_Result">
           <Property Type="Int32" Name="NumberOfCountries" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spInnerJoinSport_Team_Result">
+          <Property Type="String" Name="SportName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TeamName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetInnerJoinSport_and_Location_Result">
+          <Property Type="String" Name="SportName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetInnerJoinEvent_and_Location_Result">
+          <Property Type="String" Name="EventTitle" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="EventDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetInnerJoinEvent_and_User_Result">
+          <Property Type="String" Name="EventTitle" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="HostName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetInnerJoinEvent_and_User_Result1">
+          <Property Type="String" Name="EventTitle" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="HostName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetRightOuterJoinTeam_Event_Result">
+          <Property Type="String" Name="EventTitle" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TeamName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetInnerJoinSport_Team_Result">
+          <Property Type="String" Name="SportName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TeamName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLeftOuterJoinUser_Team_Result">
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TeamName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetEventsList_Result">
+          <Property Type="String" Name="EventTitle" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLocationList_Result">
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetSportsList_Result">
+          <Property Type="String" Name="SportName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetTeamList_Result">
+          <Property Type="String" Name="TeamName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetUserList_Result">
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -484,29 +544,94 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spInnerJoinEvent_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_Location" />
-          <FunctionImportMapping FunctionImportName="spInnerJoinEvent_and_User" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_User" />
-          <FunctionImportMapping FunctionImportName="spInnerJoinSport_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinSport_and_Location" />
-          <FunctionImportMapping FunctionImportName="spLeftOuterJoinSport_Team" FunctionName="EventsterDBModel.Store.spLeftOuterJoinSport_Team" />
-          <FunctionImportMapping FunctionImportName="spLeftOuterJoinUser_Team" FunctionName="EventsterDBModel.Store.spLeftOuterJoinUser_Team">
+          <FunctionImportMapping FunctionImportName="GetInnerJoinEvent_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_Location" >
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EventsterDBModel.spLeftOuterJoinUser_Team_Result">
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetInnerJoinEvent_and_Location_Result">
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetInnerJoinEvent_and_User" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_User" >
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetInnerJoinEvent_and_User_Result">
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetInnerJoinSport_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinSport_and_Location" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetInnerJoinSport_and_Location_Result">
+                <ScalarProperty Name="SportName" ColumnName="SportName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLeftOuterJoinUser_Team" FunctionName="EventsterDBModel.Store.spLeftOuterJoinUser_Team">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetLeftOuterJoinUser_Team_Result">
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="TeamName" ColumnName="TeamName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spRightOuterJoinTeam_Event" FunctionName="EventsterDBModel.Store.spRightOuterJoinTeam_Event" />
-          <FunctionImportMapping FunctionImportName="spUserList" FunctionName="EventsterDBModel.Store.spUserList">
+          <FunctionImportMapping FunctionImportName="GetRightOuterJoinTeam_Event" FunctionName="EventsterDBModel.Store.spRightOuterJoinTeam_Event" >
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EventsterDBModel.spUserList_Result">
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetRightOuterJoinTeam_Event_Result">
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUserList" FunctionName="EventsterDBModel.Store.spUserList">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetUserList_Result">
                 <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spUpdateEvent" FunctionName="EventsterDBModel.Store.spUpdateEvent" />
+          <FunctionImportMapping FunctionImportName="GetInnerJoinSport_Team" FunctionName="EventsterDBModel.Store.spInnerJoinSport_Team">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetInnerJoinSport_Team_Result">
+                <ScalarProperty Name="SportName" ColumnName="SportName" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEventsList" FunctionName="EventsterDBModel.Store.spEventsList" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetEventsList_Result">
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLocationList" FunctionName="EventsterDBModel.Store.spLocationList" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetLocationList_Result">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSportsList" FunctionName="EventsterDBModel.Store.spSportsList" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetSportsList_Result">
+                <ScalarProperty Name="SportName" ColumnName="SportName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTeamList" FunctionName="EventsterDBModel.Store.spTeamList" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EventsterDBModel.GetTeamList_Result">
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

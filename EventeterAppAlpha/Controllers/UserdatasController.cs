@@ -19,7 +19,7 @@ namespace EventeterAppAlpha.Controllers
         {
             return View(db.Userdatas.ToList());
         }
-        
+
         // GET: Userdatas/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,33 +48,42 @@ namespace EventeterAppAlpha.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserID,Username,Password,Email")] Userdata userdata)
         {
-            if (ModelState.IsValid)
+            try
             {
-                using (db)
+                if (ModelState.IsValid)
                 {
-                    //Checks for existing user email in the Userdata table
-                    List<Userdata> obj = db.Userdatas.Where(u => u.Email == userdata.Email).ToList();
-                    if (obj.Count > 0)
+                    using (db)
                     {
+                        //Checks for existing user email in the Userdata table
+                        List<Userdata> obj = db.Userdatas.Where(u => u.Email == userdata.Email).ToList();
+                        if (obj.Count > 0)
+                        {
 
-                        Response.Write("<script> alert('User already exists, Please enter a valid password')</script>");
-                        //Session["Email"] = uData.Email;
-                        //return RedirectToAction("Index", "Home");
+                            Response.Write("<script> alert('User already exists, Please enter a valid password')</script>");
+                            //Session["Email"] = uData.Email;
+                            //return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            db.Userdatas.Add(userdata);
+                            db.SaveChanges();
+                            return RedirectToAction("Login", "Home");
+                        }
+
                     }
-                    else
-                    {
-                        db.Userdatas.Add(userdata);
-                        db.SaveChanges();
-                        return RedirectToAction("Login", "Home"); 
-                    }
-                   
+
                 }
-                
-            }
 
-            return View(userdata);
+                return View(userdata);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Contact", "Home");
+            }
         }
 
+   
         // GET: Userdatas/Edit/5
         public ActionResult Edit(int? id)
         {

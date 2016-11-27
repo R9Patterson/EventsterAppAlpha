@@ -50,17 +50,25 @@ namespace EventeterAppAlpha.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TeamID,UserID,TeamName")] Team team)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Teams.Add(team);
-                db.SaveChanges();
-                return RedirectToAction("Create", "Sports");
+                if (ModelState.IsValid)
+                {
+                    db.Teams.Add(team);
+                    db.SaveChanges();
+                    return RedirectToAction("Create", "Sports");
+                }
+
+                ViewBag.UserID = new SelectList(db.Userdatas, "UserID", "Username", team.UserID);
+                return View(team);
             }
+            catch (Exception)
+            {
 
-            ViewBag.UserID = new SelectList(db.Userdatas, "UserID", "Username", team.UserID);
-            return View(team);
+                return RedirectToAction("About", "Home");
+            }
         }
-
+    
         // GET: Teams/Edit/5
         public ActionResult Edit(int? id)
         {

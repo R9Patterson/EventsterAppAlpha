@@ -51,16 +51,26 @@ namespace EventeterAppAlpha.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LocationID,EventID,Address,Country,SportID")] Location location)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Locations.Add(location);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                if (ModelState.IsValid)
+                {
+                    db.Locations.Add(location);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ViewBag.EventID = new SelectList(db.Events, "EventID", "EventTitle", location.EventID);
+                ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName", location.SportID);
+                return View(location);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("About", "Home");
             }
 
-            ViewBag.EventID = new SelectList(db.Events, "EventID", "EventTitle", location.EventID);
-            ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName", location.SportID);
-            return View(location);
+          
         }
 
         // GET: Locations/Edit/5

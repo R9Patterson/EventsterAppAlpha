@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetUserList_Result>
+@{
+    ViewBag.Title = "UserList";
+}
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+    Home
+</button>
+<h2>UserList</h2>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"> Here's a list of registered users</div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+
+                </th>
+              
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Username)
+                    </td>
+                   
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>

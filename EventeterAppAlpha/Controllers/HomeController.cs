@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using EventeterAppAlpha.Models;
 
 namespace EventeterAppAlpha.Controllers
@@ -18,14 +19,14 @@ namespace EventeterAppAlpha.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Oh snap! Looks like an error occured...";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Oh snap! Looks like an error occured...";
 
             return View();
         }
@@ -71,7 +72,8 @@ namespace EventeterAppAlpha.Controllers
 
         public ActionResult Logoff()
         {
-           Session.Clear();
+
+
             return RedirectToAction("Login", "Home");
         }
 
@@ -105,5 +107,69 @@ namespace EventeterAppAlpha.Controllers
         {
             return View(db.GetDistinctCount());
         }
+
+        //Inner Join - Returns a minimum of one match between Sport & Location
+        public ActionResult SportLocation()
+        {
+            return View(db.GetInnerJoinSport_and_Location());
+        }
+        //Inner Join - Returns a minimum of one match between Event & Location
+        public ActionResult EventLocation()
+        {
+            return View(db.GetInnerJoinEvent_and_Location());
+        }
+        //Inner Join - Returns a minimum of one match between Event & User
+        public ActionResult EventUser()
+        {
+            return View(db.GetInnerJoinEvent_and_User());
+        }
+        //Right Join - Returns all rows from right table and matched rows from left table. Includes DISTINCT to negate NULL values
+        public ActionResult TeamEvent()
+        {
+            return View(db.GetRightOuterJoinTeam_Event());
+        }
+
+        //Left join - Returns all rows from the left table and matched rows from the right table. Includes DISTINCT to negate NULL values
+        public ActionResult SportTeam()
+        {
+            return View(db.GetInnerJoinSport_Team());
+        }
+
+        //Left join - Returns all rows from the left table and matched rows from the right table. Includes DISTINCT to negate NULL values
+        public ActionResult UserTeam()
+        {
+            return View(db.GetLeftOuterJoinUser_Team());
+        }
+
+        //List of events
+        public ActionResult EventList()
+        {
+            return View(db.GetEventsList());
+        }
+        //List of users
+        public ActionResult UserList()
+        {
+            return View(db.GetUserList());
+        }
+
+        //List of teams
+        public ActionResult TeamsList()
+        {
+            return View(db.GetTeamList());
+        }
+
+        //List of locations
+        public ActionResult LocationList()
+        {
+            return View(db.GetLocationList());
+        }
+
+
+        //List of sports
+        public ActionResult SportList()
+        {
+            return View(db.GetSportsList());
+        }
     }
 }
+

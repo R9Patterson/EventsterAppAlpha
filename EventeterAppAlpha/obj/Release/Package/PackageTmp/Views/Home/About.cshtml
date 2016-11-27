@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+   Take me Home
+</button>

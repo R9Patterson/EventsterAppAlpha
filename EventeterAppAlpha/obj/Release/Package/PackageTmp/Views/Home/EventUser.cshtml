@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetInnerJoinEvent_and_User_Result>
+@{
+    ViewBag.Title = "EventUser";
+}
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+    Home
+</button>
+
+<h2>Even by tUser</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading"> Here's a list of events and their hosts</div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventTitle)
+
+                </th>
+                <th>
+                 @Html.DisplayNameFor(model => model.HostName)
+
+                </th>
+               
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.EventTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.HostName)
+                    </td>
+                   
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>

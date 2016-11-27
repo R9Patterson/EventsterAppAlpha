@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetRightOuterJoinTeam_Event_Result>
+@{
+    ViewBag.Title = "TeamEvent";
+}
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+    Home
+</button>
+
+<h2>Teams at Events</h2>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"> Here's a list of teams playing at events</div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventTitle)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TeamName)
+
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.EventTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.TeamName)
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>

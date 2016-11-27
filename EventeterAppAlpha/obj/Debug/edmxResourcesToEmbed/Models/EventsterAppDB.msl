@@ -90,28 +90,93 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="spInnerJoinEvent_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_Location" />
-    <FunctionImportMapping FunctionImportName="spInnerJoinEvent_and_User" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_User" />
-    <FunctionImportMapping FunctionImportName="spInnerJoinSport_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinSport_and_Location" />
-    <FunctionImportMapping FunctionImportName="spLeftOuterJoinSport_Team" FunctionName="EventsterDBModel.Store.spLeftOuterJoinSport_Team" />
-    <FunctionImportMapping FunctionImportName="spLeftOuterJoinUser_Team" FunctionName="EventsterDBModel.Store.spLeftOuterJoinUser_Team">
+    <FunctionImportMapping FunctionImportName="GetInnerJoinEvent_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_Location">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="EventsterDBModel.spLeftOuterJoinUser_Team_Result">
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetInnerJoinEvent_and_Location_Result">
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetInnerJoinEvent_and_User" FunctionName="EventsterDBModel.Store.spInnerJoinEvent_and_User">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetInnerJoinEvent_and_User_Result">
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+          <ScalarProperty Name="HostName" ColumnName="HostName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetInnerJoinSport_and_Location" FunctionName="EventsterDBModel.Store.spInnerJoinSport_and_Location">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetInnerJoinSport_and_Location_Result">
+          <ScalarProperty Name="SportName" ColumnName="SportName" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetLeftOuterJoinUser_Team" FunctionName="EventsterDBModel.Store.spLeftOuterJoinUser_Team">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetLeftOuterJoinUser_Team_Result">
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="TeamName" ColumnName="TeamName" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="spRightOuterJoinTeam_Event" FunctionName="EventsterDBModel.Store.spRightOuterJoinTeam_Event" />
-    <FunctionImportMapping FunctionImportName="spUserList" FunctionName="EventsterDBModel.Store.spUserList">
+    <FunctionImportMapping FunctionImportName="GetRightOuterJoinTeam_Event" FunctionName="EventsterDBModel.Store.spRightOuterJoinTeam_Event">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="EventsterDBModel.spUserList_Result">
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetRightOuterJoinTeam_Event_Result">
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserList" FunctionName="EventsterDBModel.Store.spUserList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetUserList_Result">
           <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="spUpdateEvent" FunctionName="EventsterDBModel.Store.spUpdateEvent" />
+    <FunctionImportMapping FunctionImportName="GetInnerJoinSport_Team" FunctionName="EventsterDBModel.Store.spInnerJoinSport_Team">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetInnerJoinSport_Team_Result">
+          <ScalarProperty Name="SportName" ColumnName="SportName" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEventsList" FunctionName="EventsterDBModel.Store.spEventsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetEventsList_Result">
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetLocationList" FunctionName="EventsterDBModel.Store.spLocationList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetLocationList_Result">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSportsList" FunctionName="EventsterDBModel.Store.spSportsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetSportsList_Result">
+          <ScalarProperty Name="SportName" ColumnName="SportName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTeamList" FunctionName="EventsterDBModel.Store.spTeamList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventsterDBModel.GetTeamList_Result">
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -49,18 +49,28 @@ namespace EventeterAppAlpha.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EventID,UserID,EventTitle,HostName,EventDate,PhoneNumber,Description,TeamID,Email")] Event @event)
+        public ActionResult Create(
+            [Bind(Include = "EventID,UserID,EventTitle,HostName,EventDate,PhoneNumber,Description,TeamID,Email")] Event
+                @event)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Events.Add(@event);
-                db.SaveChanges();
-                return RedirectToAction("Create", "Locations");
-            }
 
-            ViewBag.TeamID = new SelectList(db.Teams, "TeamID", "TeamName", @event.TeamID);
-            ViewBag.UserID = new SelectList(db.Userdatas, "UserID", "Username", @event.UserID);
-            return View(@event);
+                if (ModelState.IsValid)
+                {
+                    db.Events.Add(@event);
+                    db.SaveChanges();
+                    return RedirectToAction("Create", "Locations");
+                }
+
+                ViewBag.TeamID = new SelectList(db.Teams, "TeamID", "TeamName", @event.TeamID);
+                ViewBag.UserID = new SelectList(db.Userdatas, "UserID", "Username", @event.UserID);
+                return View(@event);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("About", "Home");
+            }
         }
 
         // GET: Events/Edit/5

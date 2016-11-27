@@ -1,0 +1,34 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetLocationList_Result>
+@{
+    ViewBag.Title = "LocationList";
+}
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+    Home
+</button>
+<h2>LocationList</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading"> Here's a list of locations by country </div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Country)
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>

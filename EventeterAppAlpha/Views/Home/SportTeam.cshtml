@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetInnerJoinSport_Team_Result>
+@{
+    ViewBag.Title = "SportTeam";
+}
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+    Home
+</button>
+<h2>Sport by Team</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading"> Here's a list of sports played by teams</div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SportName)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TeamName)
+
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.SportName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.TeamName)
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>

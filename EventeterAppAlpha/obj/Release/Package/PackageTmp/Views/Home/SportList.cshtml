@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EventeterAppAlpha.Models.GetSportsList_Result>
+@{
+    ViewBag.Title = "SportList";
+}
+<button type="button" class="btn btn-primary" value="Home" onclick="location.href='@Url.Action("Index", "Home")'">
+    Home
+</button>
+<h2>SportList</h2>
+
+<div class="panel panel-default">
+<div class="panel-heading"> Here's a list of sports </div>
+<div class="panel-body">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SportName)
+
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.SportName)
+                </td>
+
+            </tr>
+
+        }
+    </table>
+</div>
+</div>
+

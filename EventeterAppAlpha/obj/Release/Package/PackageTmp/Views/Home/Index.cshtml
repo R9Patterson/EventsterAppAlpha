@@ -51,10 +51,10 @@
     <ul class="dropdown-menu">
         @*<li>@Html.ActionLink("List of Users", "Index", "User")</li>*@ <!--This is where to add the list of users code from the stored procedure-->
         <li>@Html.ActionLink("Current number of users", "CountUser", "Home")</li>
-        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
-        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li>@Html.ActionLink("List of users and their teams", "UserTeam", "Home")</li>
+        <li>@Html.ActionLink("Names of users", "UserList", "Home")</li>
         <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+        @*<li><a href="#">Separated link</a></li>*@
     </ul>
 </div>
 
@@ -64,12 +64,12 @@
         Search Teams <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li>@Html.ActionLink("List of Teams", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("List of Teams", "TeamsList", "Home")</li>
         <li>@Html.ActionLink("Current number of teams", "TeamsCount", "Home")</li>
-        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
-        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li>@Html.ActionLink("Teams playing at events", "TeamEvent", "Home")</li>
+        <li>@Html.ActionLink("Sports played by teams", "SportTeam", "Home")</li>
         <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+        @*<li><a href="#">Separated link</a></li>*@
     </ul>
 </div>
 
@@ -79,12 +79,10 @@
         Search Locations <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li>@Html.ActionLink("List of Locations", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("List of Locations", "LocationList", "Home")</li>
         <li>@Html.ActionLink("Current number of countries ", "LocationCount", "Home")</li>
-        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
-        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
         <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+        @*<li><a href="#">Separated link</a></li>*@
     </ul>
 </div>
 
@@ -94,11 +92,11 @@
         Search Sports <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li>@Html.ActionLink("List of Sports", "Index", "Userdatas")</li>
+        <li>@Html.ActionLink("List of Sports", "SportList", "Home")</li>
         <li>@Html.ActionLink("Current number of sport types ", "SportCount", "Home")</li>
-        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
+        <li>@Html.ActionLink("Sport by Location", "SportLocation", "Home")</li>
         <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+        @*<li><a href="#">Separated link</a></li>*@
     </ul>
 </div>
 
@@ -108,11 +106,10 @@
         Search Events <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li>@Html.ActionLink("List of Events", "Index", "Events")</li>
-        <li>@Html.ActionLink("Current Number of Events", "EventCount", "Home")</li>
-        <li>@Html.ActionLink("Join Operation 2", "Index", "Locations")</li>
-        <li>@Html.ActionLink("Join Operation 3", "Index", "Sports")</li>
+        <li>@Html.ActionLink("List of Events", "EventList", "Home")</li>
+        <li>@Html.ActionLink("Current number of Events", "EventCount", "Home")</li>
+        <li>@Html.ActionLink("Location and description Info", "EventLocation", "Home")</li>
         <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+        @*<li><a href="#">Separated link</a></li>*@
     </ul>
 </div>
